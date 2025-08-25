@@ -14,3 +14,8 @@ config/name="Osiris-ReturnHome"
 run/main_scene="uid://12ksbb5kq32m"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1267
+window/size/viewport_height=778

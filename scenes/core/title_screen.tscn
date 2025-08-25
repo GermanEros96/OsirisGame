@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://dntd7k3hfxnh0"]
+
+[ext_resource type="Texture2D" uid="uid://cq7lbsq6alqxn" path="res://assets/art/bg/Background.png" id="1_6opqp"]
+
+[node name="Title_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.899258, 0.899258, 0.899258, 0.686275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6opqp")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.788
+anchor_top = 0.706
+anchor_right = 0.788
+anchor_bottom = 0.706
+offset_left = -208.776
+offset_top = -173.488
+offset_right = 208.224
+offset_bottom = 153.512
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Nueva Partida"
+
+[node name="Button2" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Opciones"
+
+[node name="Button3" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Salir"
