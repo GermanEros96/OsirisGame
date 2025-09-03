@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4m3ntj8m1svq"]
+
+[ext_resource type="Texture2D" uid="uid://d1d60vujsb7wf" path="res://assets/art/bg/level1.jpg" id="1_6iamk"]
+[ext_resource type="PackedScene" uid="uid://cp7syja7sdl4y" path="res://scenes/player/osiris.tscn" id="1_ksju7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u6i3"]
+size = Vector2(1258.75, 167.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ksju7"]
+
+[sub_resource type="Gradient" id="Gradient_7u6i3"]
+offsets = PackedFloat32Array(0, 0.377483, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.192053, 0.192053, 0.192053, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ksju7"]
+gradient = SubResource("Gradient_7u6i3")
+
+[node name="level1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(851, 237)
+scale = Vector2(0.303167, 0.405185)
+texture = ExtResource("1_6iamk")
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+texture_filter = 1
+position = Vector2(-2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(634.625, 691.75)
+shape = SubResource("RectangleShape2D_7u6i3")
+debug_color = Color(0, 0.6, 0.701961, 0.215686)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_ksju7")
+position = Vector2(636, 691)
+scale = Vector2(19.75, 2.6875)
+texture = SubResource("GradientTexture2D_ksju7")
+
+[node name="Osiris" parent="." instance=ExtResource("1_ksju7")]
+position = Vector2(-50, -57)
