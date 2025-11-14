@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyn4kau2n1l2t"]
+
+[ext_resource type="Texture2D" uid="uid://dewfo7maucmt1" path="res://assets/art/tilemap/level1/dec4.png" id="1_o5mw6"]
+
+[node name="dec2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.674815, 0.674815, 0.674815, 1)
+texture = ExtResource("1_o5mw6")

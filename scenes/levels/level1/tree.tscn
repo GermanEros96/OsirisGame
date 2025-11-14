@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://si7n0y0ub2m6"]
+
+[ext_resource type="Texture2D" uid="uid://bppllhsfp2dw" path="res://assets/art/tilemap/level1/tree1.png" id="1_3ix2f"]
+
+[node name="Tree" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.291018, 0.349176, 0.427569, 1)
+texture = ExtResource("1_3ix2f")

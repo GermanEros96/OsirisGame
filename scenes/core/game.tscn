@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://12ksbb5kq32m"]
+
+[ext_resource type="Script" uid="uid://63k7wpkylhpw" path="res://scripts/game.gd" id="1_6ea2g"]
+[ext_resource type="PackedScene" uid="uid://dntd7k3hfxnh0" path="res://scenes/core/title_screen.tscn" id="1_avem7"]
+[ext_resource type="PackedScene" uid="uid://d4m3ntj8m1svq" path="res://scenes/levels/level1/level_1.tscn" id="2_6ea2g"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(1058, 395)
+script = ExtResource("1_6ea2g")
+level_scene = ExtResource("2_6ea2g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.1, 0.1)
+limit_left = 0
+limit_top = 0
+limit_right = 1170
+limit_bottom = 580
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title_Screen" parent="CanvasLayer" instance=ExtResource("1_avem7")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 760.0
+offset_top = 400.0
+offset_right = 760.0
+offset_bottom = 400.0
+grow_horizontal = 1
+grow_vertical = 1

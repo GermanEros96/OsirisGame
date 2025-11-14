@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvqe1l2tb7pmc"]
+
+[ext_resource type="Texture2D" uid="uid://tg6mi1ipb2ry" path="res://assets/art/utils/hueso.png" id="1_0cn1x"]
+[ext_resource type="Script" uid="uid://bd7jvcbp0uugi" path="res://scenes/items/bone.gd" id="1_v2lt0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hamhn"]
+radius = 17.2627
+
+[node name="hueso" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_v2lt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hamhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0cn1x")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-23, -22, 43, 43)

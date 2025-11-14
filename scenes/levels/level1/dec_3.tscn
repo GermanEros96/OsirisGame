@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://coe2umubwmfyb"]
+
+[ext_resource type="Texture2D" uid="uid://cpgop20pmimu6" path="res://assets/art/tilemap/level1/dec2.png" id="1_is08b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is08b"]
+size = Vector2(143, 12.5)
+
+[node name="dec_3" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_is08b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(77, -108.25)
+shape = SubResource("RectangleShape2D_is08b")
+one_way_collision = true
+one_way_collision_margin = 1.2
+debug_color = Color(0.866803, 0.331079, 0.34038, 0.42)

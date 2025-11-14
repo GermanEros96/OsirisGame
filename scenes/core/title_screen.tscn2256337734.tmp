@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://dntd7k3hfxnh0"]
+
+[ext_resource type="Texture2D" uid="uid://cq7lbsq6alqxn" path="res://assets/art/bg/Background.png" id="1_6opqp"]
+[ext_resource type="Script" uid="uid://dld3o0a2iib3c" path="res://scripts/utils/title_screen.gd" id="1_myoxn"]
+
+[node name="Title_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_myoxn")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.899258, 0.899258, 0.899258, 0.686275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6opqp")
+expand_mode = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.788
+anchor_top = 0.706
+anchor_right = 0.788
+anchor_bottom = 0.706
+offset_left = -208.776
+offset_top = -173.488
+offset_right = 208.224
+offset_bottom = 153.512
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Background/MainButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Nueva Partida"
+
+[node name="Button2" type="Button" parent="Background/MainButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Opciones"
+
+[node name="Button3" type="Button" parent="Background/MainButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Salir"
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.792
+anchor_top = 0.623
+anchor_right = 0.792
+anchor_bottom = 0.623
+offset_left = -242.464
+offset_top = -411.694
+offset_right = 241.536
+offset_bottom = 217.306
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.791
+anchor_top = 0.175
+anchor_right = 0.791
+anchor_bottom = 0.175
+offset_left = -379.844
+offset_top = -108.075
+offset_right = 97.156
+offset_bottom = 4.925
+theme_override_font_sizes/font_size = 40
+text = "Opciones
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Background/MainButtons/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Background/MainButtons/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Background/MainButtons/Button3" to="." method="_on_exit_pressed"]

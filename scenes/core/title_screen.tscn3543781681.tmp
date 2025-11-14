@@ -1,0 +1,260 @@
+[gd_scene load_steps=9 format=3 uid="uid://dntd7k3hfxnh0"]
+
+[ext_resource type="Texture2D" uid="uid://cq7lbsq6alqxn" path="res://assets/art/bg/Background.png" id="1_6opqp"]
+[ext_resource type="Script" uid="uid://dld3o0a2iib3c" path="res://scripts/utils/title_screen.gd" id="1_myoxn"]
+[ext_resource type="Texture2D" uid="uid://tg6mi1ipb2ry" path="res://assets/art/utils/hueso.png" id="3_pyuio"]
+[ext_resource type="Script" uid="uid://c4wu4yx5o8gu5" path="res://scripts/utils/soundbg_slider.gd" id="4_fm0jc"]
+[ext_resource type="AudioStream" uid="uid://dvrcbeoj2tqt7" path="res://assets/sounds/soundbg/title_sound.wav" id="4_whpye"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_myoxn"]
+color = Color(0.597669, 0.486867, 0.303893, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pyuio"]
+color = Color(1, 1, 1, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_whpye"]
+color = Color(1, 1, 1, 1)
+thickness = 8
+
+[node name="Title_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_myoxn")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.899258, 0.899258, 0.899258, 0.686275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6opqp")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MainButtons" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.788
+anchor_top = 0.706
+anchor_right = 0.788
+anchor_bottom = 0.706
+offset_left = -208.776
+offset_top = -173.488
+offset_right = 208.224
+offset_bottom = 153.512
+theme_override_constants/separation = 15
+
+[node name="NewGame" type="Button" parent="Background/MainButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Nueva Partida"
+
+[node name="Optionsbutton" type="Button" parent="Background/MainButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Opciones"
+
+[node name="Exit" type="Button" parent="Background/MainButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Salir"
+
+[node name="Options" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.803922)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.792
+anchor_top = 0.5
+anchor_right = 0.792
+anchor_bottom = 0.5
+offset_left = -243.464
+offset_top = -316.0
+offset_right = 240.536
+offset_bottom = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.5
+anchor_right = 0.499
+anchor_bottom = 0.5
+offset_left = -238.516
+offset_top = -312.5
+offset_right = 238.484
+offset_bottom = -199.5
+theme_override_colors/font_color = Color(0.838897, 0.838897, 0.838897, 1)
+theme_override_constants/line_spacing = -76
+theme_override_font_sizes/font_size = 54
+text = "Opciones
+"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="Options/Label"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 5.124
+anchor_right = 0.508
+anchor_bottom = 5.124
+offset_left = -245.316
+offset_top = -25.012
+offset_right = 238.684
+offset_bottom = 24.988
+theme_override_font_sizes/font_size = 25
+text = "Volver"
+
+[node name="Game" type="Button" parent="Options/Label"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 3.916
+anchor_right = 0.5
+anchor_bottom = 3.916
+offset_left = -241.5
+offset_top = -190.508
+offset_right = 241.5
+offset_bottom = -137.508
+theme_override_font_sizes/font_size = 25
+text = "Juego"
+
+[node name="HowtoPlay" type="Button" parent="Options/Label"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 3.916
+anchor_right = 0.5
+anchor_bottom = 3.916
+offset_left = -242.5
+offset_top = -28.508
+offset_right = 241.5
+offset_bottom = 24.492
+theme_override_font_sizes/font_size = 25
+text = "¿Como Jugar?"
+
+[node name="Sounds" type="Button" parent="Options/Label"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 3.916
+anchor_right = 0.5
+anchor_bottom = 3.916
+offset_left = -241.5
+offset_top = -108.508
+offset_right = 242.5
+offset_bottom = -56.508
+theme_override_font_sizes/font_size = 25
+text = "Audio y Sonido"
+
+[node name="SoundPanel" type="Panel" parent="Options"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.649
+anchor_right = 0.5
+anchor_bottom = 0.649
+offset_left = -228.0
+offset_top = -261.221
+offset_right = 219.0
+offset_bottom = 261.779
+
+[node name="Soundbox" type="VBoxContainer" parent="Options/SoundPanel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.504
+anchor_top = 0.501
+anchor_right = 0.504
+anchor_bottom = 0.501
+offset_left = -224.288
+offset_top = -261.023
+offset_right = 222.712
+offset_bottom = 250.977
+
+[node name="Soundbg_slider" type="HSlider" parent="Options/SoundPanel/Soundbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_pyuio")
+theme_override_icons/grabber_highlight = ExtResource("3_pyuio")
+theme_override_styles/slider = SubResource("StyleBoxLine_myoxn")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_pyuio")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_whpye")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_fm0jc")
+audio = "Audiobg"
+
+[node name="Audio" type="Label" parent="Options/SoundPanel/Soundbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 45
+text = "Audio
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Soundfx_Slider" type="HSlider" parent="Options/SoundPanel/Soundbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_pyuio")
+theme_override_icons/grabber_highlight = ExtResource("3_pyuio")
+theme_override_styles/slider = SubResource("StyleBoxLine_myoxn")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_pyuio")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_whpye")
+value = 100.0
+
+[node name="Soundfx" type="Label" parent="Options/SoundPanel/Soundbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 45
+text = "Sonido Fx
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BacktoOptions" type="Button" parent="Options/SoundPanel/Soundbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Volver"
+
+[node name="TitleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_whpye")
+autoplay = true
+bus = &"Audiobg"
+
+[connection signal="pressed" from="Background/MainButtons/NewGame" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Background/MainButtons/Optionsbutton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Background/MainButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/Label/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Options/Label/Sounds" to="." method="_on_sounds_pressed"]
+[connection signal="value_changed" from="Options/SoundPanel/Soundbox/Soundbg_slider" to="Options/SoundPanel/Soundbox/Soundbg_slider" method="_on_value_changed"]
+[connection signal="pressed" from="Options/SoundPanel/Soundbox/BacktoOptions" to="." method="_on_backto_options_pressed"]
