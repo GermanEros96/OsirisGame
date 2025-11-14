@@ -5,18 +5,26 @@ signal start_game
 @onready var options: Panel               = $Options
 @onready var soundPanel: Panel            = $Options/SoundPanel
 @onready var labelOptions: Label          = $Options/Label
+@onready var click_fx: AudioStreamPlayer =  $ClickFX
+
 
 
 enum Menu { MAIN, OPTIONS, SOUND }
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	
 
 	# Asegurate de cortar clicks detrás cuando hay paneles encima
 	options.mouse_filter     = Control.MOUSE_FILTER_STOP
 	soundPanel.mouse_filter  = Control.MOUSE_FILTER_STOP
 
 	show_menu(Menu.MAIN)  # estado inicial
+	
+func _play_click() -> void:
+	if click_fx:
+		click_fx.play()
+
 
 func show_menu(which: Menu) -> void:
 	# Main
@@ -31,19 +39,25 @@ func show_menu(which: Menu) -> void:
 	# print("Main:", main_buttons.visible, " Opt:", options.visible, " Sound:", soundPanel.visible)
 
 func _on_start_pressed() -> void:
+	_play_click()
 	start_game.emit()
 
 func _on_settings_pressed() -> void:
+	_play_click()
 	show_menu(Menu.OPTIONS)
 
 func _on_exit_pressed() -> void:
+	_play_click()
 	get_tree().quit()
 
 func _on_back_pressed() -> void:
+	_play_click()
 	show_menu(Menu.MAIN)
 
 func _on_sounds_pressed() -> void:
+	_play_click()
 	show_menu(Menu.SOUND)
 
 func _on_backto_options_pressed() -> void:
+	_play_click()
 	show_menu(Menu.OPTIONS)

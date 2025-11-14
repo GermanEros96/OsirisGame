@@ -6,6 +6,7 @@ extends Area2D
 @export var float_time: float = 0.7  # tiempo ida/vuelta del flotado
 
 @onready var sprite: Sprite2D = $"../Sprite2D"
+@onready var sound: AudioStreamPlayer = $"../AudioStreamPlayer"
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -34,6 +35,7 @@ func _on_body_entered(body: Node) -> void:
 
 	# Sumar al inventario del jugador (si tiene método)
 	if body.has_method("add_bone"):
+		sound.play()
 		body.add_bone(amount)
 		
 		

@@ -46,29 +46,30 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# Mover Sprite mirando a la derecha
-	if dir > 0:  anim.flip_h = true     # derecha (ajustá si tu sprite base mira distinto)
-	elif dir < 0: anim.flip_h = false   # izquierda
+	if dir > 0:  anim.flip_h = false     # derecha (ajustá si tu sprite base mira distinto)
+	elif dir < 0: anim.flip_h = true   # izquierda
 
 	# --- PRIORIDADES DE ANIMACIÓN ---
 
 	# 0) Arriba = 'alert' (se para en 2 patas)
 	#    Lo ponemos primero para que tenga prioridad sobre el resto.
 	if is_on_floor() and Input.is_action_pressed("ui_up"):
-		if anim.animation != "alert":
-			anim.play("alert")
+		if anim.animation != "up":
+			anim.play("up")
 		velocity.x = 0.0  # opcional: bloquear desplazamiento mientras está en alerta
 		return
 
 	# 1) Abajo = 'down' 
 	if is_on_floor() and Input.is_action_pressed("ui_down"):
-		anim.play("down")
+		if anim.animation != "down":
+			anim.play("down")
 		velocity.x = 0.0  # descomentá si querés bloquear el desplazamiento al agacharse
 		return
 
 	# 2) Flash de salto
 	if jump_flash_timer > 0.0:
 		jump_flash_timer -= delta
-		anim.animation = "jump_run"
+		anim.animation = "Jump"
 		return
 
 	# 3) Movimiento basado en velocidad horizontal
@@ -76,12 +77,12 @@ func _physics_process(delta: float) -> void:
 
 	if speed_abs >= RUN_TRIGGER:
 		# Corriendo MUY rápido -> 'jump_run' 
-		if anim.animation != "jump_run":
-			anim.play("jump_run")
+		if anim.animation != "Run":
+			anim.play("Run")
 	elif speed_abs > 0.0:
 		# Se mueve pero por debajo del umbral -> 'walk'
-		if anim.animation != "walk":
-			anim.play("walk")
+		if anim.animation != "Run":
+			anim.play("Run")
 	else:
 		# Quieto -> 'wait'
 		if anim.animation != "wait":

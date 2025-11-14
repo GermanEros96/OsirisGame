@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvqe1l2tb7pmc"]
+[gd_scene load_steps=5 format=3 uid="uid://dvqe1l2tb7pmc"]
 
 [ext_resource type="Texture2D" uid="uid://tg6mi1ipb2ry" path="res://assets/art/utils/hueso.png" id="1_0cn1x"]
 [ext_resource type="Script" uid="uid://bd7jvcbp0uugi" path="res://scenes/items/bone.gd" id="1_v2lt0"]
+[ext_resource type="AudioStream" uid="uid://dcfqy30jq4pfu" path="res://assets/sounds/soundfx/Bone.mp3" id="3_ad7i7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hamhn"]
 radius = 17.2627
@@ -19,3 +20,6 @@ texture = ExtResource("1_0cn1x")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-23, -22, 43, 43)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ad7i7")

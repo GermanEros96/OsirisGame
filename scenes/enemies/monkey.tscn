@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://cs1evbe4dqlfu"]
+
+[ext_resource type="Script" uid="uid://chisva2817jex" path="res://scenes/enemies/monkey.gd" id="1_5ychv"]
+[ext_resource type="Texture2D" uid="uid://c5h2k1shbmdar" path="res://assets/art/enemies/mono_0001.png" id="1_rwhoc"]
+[ext_resource type="PackedScene" uid="uid://oehy2nt5vj6b" path="res://scenes/items/banana.tscn" id="2_4targ"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ychv"]
+size = Vector2(58, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4targ"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(0, 344, 71, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icn2m"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(71, 344, 71, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp3tx"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(142, 344, 71, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkeoj"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(0, 86, 71, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x61vr"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(71, 86, 71, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pcp2"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(355, 0, 71, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tapjc"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(426, 86, 71, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbxl5"]
+atlas = ExtResource("1_rwhoc")
+region = Rect2(142, 86, 71, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdg1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4targ")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icn2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp3tx")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkeoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x61vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pcp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tapjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbxl5")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4targ"]
+size = Vector2(1488, 913.5)
+
+[node name="Monkey" type="Area2D"]
+script = ExtResource("1_5ychv")
+banana_scene = ExtResource("2_4targ")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_5ychv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gdg1w")
+animation = &"move"
+frame_progress = 0.2508145
+
+[node name="DetectedArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectedArea2D"]
+position = Vector2(5, 384)
+shape = SubResource("RectangleShape2D_4targ")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(1, -19)
+
+[node name="ThrowCD" type="Timer" parent="."]
