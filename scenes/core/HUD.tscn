@@ -1,8 +1,87 @@
-[gd_scene load_steps=4 format=3 uid="uid://d33s8y2pisdqf"]
+[gd_scene load_steps=16 format=3 uid="uid://d33s8y2pisdqf"]
 
 [ext_resource type="Script" uid="uid://1ukcfu2lau7g" path="res://scripts/utils/UI.gd" id="1_3lghw"]
 [ext_resource type="Texture2D" uid="uid://tg6mi1ipb2ry" path="res://assets/art/utils/hueso.png" id="1_d0fw2"]
 [ext_resource type="FontFile" uid="uid://do6xs78e3q8qr" path="res://assets/art/fonts/Bungee-Regular.ttf" id="3_wvllo"]
+[ext_resource type="Texture2D" uid="uid://rnl1t1xjpucl" path="res://assets/art/utils/Vida.png" id="4_nw5li"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14nom"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(0, 0, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgxr7"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(144, 0, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esssv"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(288, 0, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc6h1"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(432, 0, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf7e1"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(576, 0, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elodv"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(0, 134, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bse2u"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(144, 134, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir841"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(288, 134, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocafb"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(432, 134, 144, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5niee"]
+atlas = ExtResource("4_nw5li")
+region = Rect2(576, 134, 144, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvllo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14nom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgxr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esssv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc6h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf7e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elodv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bse2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir841")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocafb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5niee")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,9 +93,9 @@ grow_vertical = 2
 script = ExtResource("1_3lghw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+offset_right = 59.0
+offset_bottom = 64.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
@@ -31,3 +110,24 @@ offset_bottom = 22.0
 theme_override_fonts/font = ExtResource("3_wvllo")
 theme_override_font_sizes/font_size = 50
 text = "00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer"]
+position = Vector2(40, 680)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wvllo")
+frame_progress = 0.80222714
+
+[node name="Life" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 640.0
+offset_right = 153.0
+offset_bottom = 706.0
+theme_override_fonts/font = ExtResource("3_wvllo")
+theme_override_font_sizes/font_size = 50
+text = "0"

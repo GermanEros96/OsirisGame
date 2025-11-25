@@ -14,6 +14,9 @@ const RUN_TRIGGER := 250.0
 signal bones_changed(count: int)
 var bones: int = 0
 
+# --- Respawn / Checkpoint ---
+var respawn_position: Vector2
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 # Muestra 1 solo frame de 'jump_run' cuando se toca Space.
@@ -21,10 +24,14 @@ var jump_flash_timer := 0.0        # segundos que forzamos el frame 0 de 'jump_r
 const JUMP_FLASH_TIME := 0.9       # ~80ms, ajustá a gusto
 
 func _ready() -> void:
+	
+	respawn_position = global_position
 	anim.play("wait")
 	anim.flip_h = false  # false = mira a la DERECHA (cambiá si tu sprite base mira al otro lado)
 
 func _physics_process(delta: float) -> void:
+	
+	
 	# --- Inputs ---
 	var dir := Input.get_axis("ui_left", "ui_right") # -1 izq, 0, +1 der
 
@@ -97,3 +104,12 @@ func add_bone(amount: int = 1) -> void:
 	print("Osiris tiene huesos: %d" % bones)
 	emit_signal("bones_changed", bones)
 	
+# ✅ llamado por el checkpoint
+func set_respawn_position(pos: Vector2) -> void:
+	respawn_position = global_position
+
+
+# ✅ llamado por la DeathZone
+func respawn() -> void:
+	global_position = respawn_position
+	velocity = Vector2.ZERO

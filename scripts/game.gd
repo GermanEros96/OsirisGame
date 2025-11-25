@@ -1,4 +1,3 @@
-
 extends Node
 
 # Arrastrá aquí tu res://scenes/levels/level1.tscn (o la ruta que uses)
