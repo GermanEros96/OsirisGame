@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://63k7wpkylhpw" path="res://scripts/game.gd" id="1_6ea2g"]
 [ext_resource type="PackedScene" uid="uid://dntd7k3hfxnh0" path="res://scenes/core/title_screen.tscn" id="1_avem7"]
-[ext_resource type="PackedScene" uid="uid://d4m3ntj8m1svq" path="res://scenes/levels/level1/level_1.tscn" id="2_6ea2g"]
+[ext_resource type="PackedScene" uid="uid://dtcl60dteqw30" path="res://scenes/core/loading_screen.tscn" id="2_6ea2g"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(1058, 395)

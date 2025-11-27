@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfxscb74n0j57"]
+
+[ext_resource type="Texture2D" uid="uid://dq72ifkdkdawi" path="res://assets/art/enemies/beartrap.png" id="1_ir2hd"]
+[ext_resource type="Script" uid="uid://do2wpsq3saxj2" path="res://scripts/enemies/bear_trap.gd" id="1_wi8um"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi8um"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xldrs"]
+atlas = ExtResource("1_ir2hd")
+region = Rect2(0, 0, 152, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wirti"]
+atlas = ExtResource("1_ir2hd")
+region = Rect2(152, 0, 152, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0nmj"]
+atlas = ExtResource("1_ir2hd")
+region = Rect2(304, 0, 152, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5wkl"]
+atlas = ExtResource("1_ir2hd")
+region = Rect2(0, 120, 152, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snud2"]
+atlas = ExtResource("1_ir2hd")
+region = Rect2(152, 120, 152, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6o16o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xldrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wirti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0nmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5wkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snud2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[node name="BearTrap" type="Area2D"]
+position = Vector2(0, 8)
+script = ExtResource("1_wi8um")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wi8um")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -40)
+sprite_frames = SubResource("SpriteFrames_6o16o")
+
+[node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

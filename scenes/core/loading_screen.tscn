@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtcl60dteqw30"]
+
+[ext_resource type="Texture2D" uid="uid://cq7lbsq6alqxn" path="res://assets/art/bg/Background.png" id="1_0wt2q"]
+[ext_resource type="Script" uid="uid://bcemqkgnbepa1" path="res://scripts/utils/loading_screen.gd" id="1_x5jtj"]
+[ext_resource type="Texture2D" uid="uid://dsrl3hlcdyrp" path="res://assets/art/utils/LoadingBarProgress_0001.png" id="2_iwg68"]
+[ext_resource type="Texture2D" uid="uid://bscoy412r7tpp" path="res://assets/art/utils/LoadingBarProgress_0003.png" id="4_frnfj"]
+[ext_resource type="FontFile" uid="uid://do6xs78e3q8qr" path="res://assets/art/fonts/Bungee-Regular.ttf" id="5_x5jtj"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5jtj"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 114.30001
+angle_max = 114.30001
+inherit_velocity_ratio = 0.775
+initial_velocity_min = 388.88998
+initial_velocity_max = 428.56998
+angular_velocity_min = 297.13998
+angular_velocity_max = 297.13998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+damping_max = 18.254002
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_x5jtj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0wt2q")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 544.0
+offset_right = 1548.0
+offset_bottom = 1044.0
+texture_under = ExtResource("2_iwg68")
+texture_progress = ExtResource("4_frnfj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(0.99693376, 0.9152761, 0.71571726, 0.34901962)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 616.0
+offset_right = 472.0
+offset_bottom = 856.0
+theme_override_fonts/normal_font = ExtResource("5_x5jtj")
+theme_override_font_sizes/normal_font_size = 50
+text = "CARGANDO...
+"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(152, 352)
+amount = 111
+lifetime = 17.860000000000003
+process_material = SubResource("ParticleProcessMaterial_x5jtj")
