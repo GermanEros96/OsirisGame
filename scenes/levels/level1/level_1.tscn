@@ -161,7 +161,7 @@ scale = Vector2(1.2, 1.2)
 
 [node name="BearTrap" parent="Enemies" instance=ExtResource("4_3w3kl")]
 light_mask = 4
-position = Vector2(1264.0001, 608)
+position = Vector2(1264, 619.00006)
 rotation = -1.0471976
 
 [node name="CheckPoints" type="Node" parent="."]

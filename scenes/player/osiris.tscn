@@ -267,3 +267,5 @@ limit_bottom = 900
 texture_filter = 1
 position = Vector2(62.5, 152.25)
 shape = SubResource("RectangleShape2D_tt6g3")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]

@@ -48,7 +48,7 @@ animations = [{
 "speed": 18.0
 }]
 
-[node name="BearTrap" type="Area2D"]
+[node name="BearTrap" type="Area2D" groups=["Enemies"]]
 position = Vector2(0, 8)
 script = ExtResource("1_wi8um")
 

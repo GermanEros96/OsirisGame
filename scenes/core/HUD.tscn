@@ -83,7 +83,7 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" groups=["UI"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

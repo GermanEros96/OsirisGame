@@ -16,6 +16,8 @@ func set_bones(count: int) -> void:
 func set_life(count: int) -> void:
 	life.text ="x %d" % count
 
+func update_hearts(value: int) -> void:
+	life.text = "x " + str(value)
 
 func _on_osiris_bones_changed(count: int) -> void:
 	set_bones(count)

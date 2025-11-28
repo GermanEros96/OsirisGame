@@ -5,6 +5,15 @@ const SPEED := 400.0
 const ACCEL := 2000.0
 const FRICTION := 2000.0
 
+# ----------------------------------------
+# VARIABLES DE VIDA Y DAÑO
+# ----------------------------------------
+@export var max_lives: int = 3
+var lives: int = max_lives
+var invincible: bool = false
+var invincible_time := 1.0   # segundos de parpadeo
+var blink_speed := 0.1
+
 # --- Salto (si usás física de salto) ---
 const JUMP_VELOCITY := -500.0
 const GRAVITY := 900.0
@@ -18,6 +27,7 @@ var bones: int = 0
 var respawn_position: Vector2
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hurt_sound: AudioStreamPlayer = $HurtSound
 
 # Muestra 1 solo frame de 'jump_run' cuando se toca Space.
 var jump_flash_timer := 0.0        # segundos que forzamos el frame 0 de 'jump_run'
@@ -113,3 +123,52 @@ func set_respawn_position(pos: Vector2) -> void:
 func respawn() -> void:
 	global_position = respawn_position
 	velocity = Vector2.ZERO
+
+# ----------------------------------------
+# PARPADEO / INVENCIBILIDAD
+# ----------------------------------------
+func blink() -> void:
+	var t = 0.0
+	while t < invincible_time:
+		anim.visible = not anim.visible
+		await get_tree().create_timer(blink_speed).timeout
+		t += blink_speed
+	anim.visible = true
+	invincible = false
+
+
+# ----------------------------------------
+# MUERTE Y RESPAWN
+# ----------------------------------------
+func die() -> void:
+	lives = max_lives
+	global_position = respawn_position
+
+	# Update UI
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_hearts(lives)
+
+# ----------------------------------------
+# RECIBIR DAÑO (banana, trampa, enemigo)
+# ----------------------------------------
+func take_damage(amount: int) -> void:
+	if invincible:
+		return
+
+	lives -= amount
+	hurt_sound.play()
+
+	# Actualizar UI (HUD)
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_hearts(lives)
+
+	# Si se quedó sin vidas → futuro Game Over
+	if lives <= 0:
+		die()
+		return
+
+	# Activar parpadeo
+	invincible = true
+	await blink()

@@ -7,7 +7,8 @@
 radius = 4.0
 
 [node name="Banana" type="RigidBody2D"]
-collision_layer = 2
+z_index = 6
+collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_awu76")
 
@@ -16,5 +17,9 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_e3a2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+z_index = 7
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_awu76")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
