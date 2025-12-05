@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5j635k23d0qh"]
+
+[ext_resource type="Texture2D" uid="uid://ddb7btkn5aehm" path="res://assets/art/tilemap/level1/dec5.png" id="1_h6oir"]
+
+[node name="dec_5" type="Sprite2D"]
+texture = ExtResource("1_h6oir")

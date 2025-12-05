@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://br5d2aow6qw5v"]
+
+[ext_resource type="Script" uid="uid://7fo1xxv7ongl" path="res://scripts/enemies/cazador.gd" id="1_mqe3t"]
+[ext_resource type="Texture2D" uid="uid://ddna5mq18wai" path="res://assets/art/enemies/jabali_0002.png" id="2_mqe3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqe3t"]
+size = Vector2(25, 26.666668)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rlrq"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(0, 0, 128, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvs1k"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(128, 0, 128, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtm65"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(256, 0, 128, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q32mt"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(384, 0, 128, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq3af"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(512, 0, 128, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgede"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(640, 0, 128, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sql06"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(768, 0, 128, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r28jm"]
+atlas = ExtResource("2_mqe3t")
+region = Rect2(896, 0, 128, 116)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x33n7"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rlrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvs1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtm65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q32mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq3af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgede")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sql06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r28jm")
+}],
+"loop": true,
+"name": &"run",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rlrq"]
+size = Vector2(165.33334, 26)
+
+[node name="Jabali" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_mqe3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 2.666666)
+shape = SubResource("RectangleShape2D_mqe3t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+position = Vector2(-7, -13)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_x33n7")
+animation = &"run"
+frame_progress = 0.3976014
+
+[node name="Vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+position = Vector2(93.333336, 3)
+shape = SubResource("RectangleShape2D_6rlrq")
+
+[node name="AlertTimer" type="Timer" parent="."]
+
+[node name="AlertSound" type="AudioStreamPlayer" parent="."]
+
+[node name="ChaseTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
+[connection signal="timeout" from="AlertTimer" to="." method="_on_alert_timer_timeout"]
+[connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
